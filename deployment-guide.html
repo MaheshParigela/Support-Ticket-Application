@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Deployment Guide - AWS Enterprise Support Ticket System</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:#0f172a;
+color:white;
+margin:0;
+padding:40px;
+line-height:1.8;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+color:#8b5cf6;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:40px;
+}
+
+.section{
+background:#111827;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+}
+
+.section h2{
+color:#8b5cf6;
+margin-bottom:15px;
+}
+
+.code{
+background:#020617;
+padding:15px;
+border-radius:10px;
+font-family:Consolas;
+overflow:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+th,td{
+border:1px solid #334155;
+padding:12px;
+text-align:left;
+}
+
+th{
+background:#1e293b;
+}
+
+ul{
+padding-left:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AWS Enterprise Support Ticket System</h1>
+
+<p class="subtitle">
+Complete Deployment Guide & Project Documentation
+</p>
+
+<div class="section">
+
+<h2>Project Objective</h2>
+
+<p>
+
+Build a fully serverless enterprise support ticket application
+using AWS services. The application enables customer
+registration, authentication, ticket creation,
+ticket tracking, status updates and email notifications.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>AWS Services Used</h2>
+
+<table>
+
+<tr>
+<th>Service</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>Amazon S3</td>
+<td>Static Website Hosting</td>
+</tr>
+
+<tr>
+<td>CloudFront</td>
+<td>Content Delivery Network</td>
+</tr>
+
+<tr>
+<td>Route53</td>
+<td>Custom Domain Mapping</td>
+</tr>
+
+<tr>
+<td>Cognito</td>
+<td>User Authentication</td>
+</tr>
+
+<tr>
+<td>API Gateway</td>
+<td>REST APIs</td>
+</tr>
+
+<tr>
+<td>Lambda</td>
+<td>Business Logic</td>
+</tr>
+
+<tr>
+<td>DynamoDB</td>
+<td>Data Storage</td>
+</tr>
+
+<tr>
+<td>SNS</td>
+<td>Email Notifications</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 1 - Frontend Development</h2>
+
+<ul>
+
+<li>Created Landing Page</li>
+
+<li>Created Dashboard Page</li>
+
+<li>Created My Tickets Page</li>
+
+<li>Created Admin Dashboard</li>
+
+<li>Implemented Responsive Styling</li>
+
+<li>Integrated JavaScript APIs</li>
+
+</ul>
+
+<div class="code">
+
+Files Created
+
+index.html
+dashboard.html
+admin.html
+mytickets.html
+
+style.css
+
+auth.js
+app.js
+admin.js
+mytickets.js
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 2 - Cognito Authentication</h2>
+
+<ul>
+
+<li>Created User Pool</li>
+
+<li>Created App Client</li>
+
+<li>Configured Hosted UI</li>
+
+<li>Configured Callback URL</li>
+
+<li>Configured Logout URL</li>
+
+<li>Integrated Login / Signup Buttons</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 3 - DynamoDB Setup</h2>
+
+<ul>
+
+<li>Created SupportTickets Table</li>
+
+<li>Partition Key: ticket_id</li>
+
+<li>On-Demand Capacity Mode</li>
+
+<li>Stored Ticket Information</li>
+
+</ul>
+
+<div class="code">
+
+Table Name
+
+SupportTickets
+
+Partition Key
+
+ticket_id
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 4 - Lambda Functions</h2>
+
+<table>
+
+<tr>
+<th>Lambda Function</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>create_ticket_lambda</td>
+<td>Create Support Ticket</td>
+</tr>
+
+<tr>
+<td>get_tickets_lambda</td>
+<td>Retrieve Ticket Data</td>
+</tr>
+
+<tr>
+<td>get_all_tickets_lambda</td>
+<td>Admin Dashboard Data</td>
+</tr>
+
+<tr>
+<td>update_ticket_lambda</td>
+<td>Update Ticket Status</td>
+</tr>
+
+<tr>
+<td>dashboard_stats_lambda</td>
+<td>Generate Dashboard Analytics</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 5 - API Gateway</h2>
+
+<table>
+
+<tr>
+<th>Method</th>
+<th>Resource</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>POST</td>
+<td>/ticket</td>
+<td>Create Ticket</td>
+</tr>
+
+<tr>
+<td>GET</td>
+<td>/ticket</td>
+<td>Retrieve Tickets</td>
+</tr>
+
+<tr>
+<td>PUT</td>
+<td>/ticket</td>
+<td>Update Ticket Status</td>
+</tr>
+
+<tr>
+<td>GET</td>
+<td>/alltickets</td>
+<td>Admin Dashboard</td>
+</tr>
+
+<tr>
+<td>GET</td>
+<td>/stats</td>
+<td>Dashboard Metrics</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 6 - SNS Notifications</h2>
+
+<ul>
+
+<li>Created SNS Topic</li>
+
+<li>Created Email Subscription</li>
+
+<li>Configured High Priority Alerts</li>
+
+<li>Configured Status Change Notifications</li>
+
+<li>Integrated SNS with Lambda</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 7 - Dashboard Analytics</h2>
+
+<ul>
+
+<li>Total Tickets</li>
+
+<li>Open Tickets</li>
+
+<li>Resolved Tickets</li>
+
+<li>High Priority Tickets</li>
+
+<li>Dynamic Dashboard Statistics</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Phase 8 - Admin Filters</h2>
+
+<ul>
+
+<li>Search By Ticket ID</li>
+
+<li>Filter By Status</li>
+
+<li>Filter By Priority</li>
+
+<li>Dynamic Status Updates</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Major Issues Faced During Development</h2>
+
+<table>
+
+<tr>
+<th>Issue</th>
+<th>Resolution</th>
+</tr>
+
+<tr>
+<td>login is not defined</td>
+<td>auth.js was not loaded correctly</td>
+</tr>
+
+<tr>
+<td>submitTicket is not defined</td>
+<td>app.js was missing from dashboard page</td>
+</tr>
+
+<tr>
+<td>HTTP 400 Cognito Error</td>
+<td>Callback URL mismatch in User Pool</td>
+</tr>
+
+<tr>
+<td>Missing Authentication Token</td>
+<td>Incorrect API Gateway Resource URL</td>
+</tr>
+
+<tr>
+<td>CORS Error</td>
+<td>Enabled CORS and redeployed API</td>
+</tr>
+
+<tr>
+<td>DynamoDB Records Not Visible</td>
+<td>Checked Explore Items and verified table name</td>
+</tr>
+
+<tr>
+<td>Unauthorized 401 Error</td>
+<td>Authorization configuration mismatch</td>
+</tr>
+
+<tr>
+<td>Tickets Not Loading</td>
+<td>GET Lambda was not configured properly</td>
+</tr>
+
+<tr>
+<td>Email Notifications Missing</td>
+<td>SNS Publish logic added to Lambda</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+
+<h2>Future Enhancements</h2>
+
+<ul>
+
+<li>Cognito Groups</li>
+
+<li>Role Based Access Control</li>
+
+<li>Customer Specific Tickets</li>
+
+<li>Admin Authorization</li>
+
+<li>Ticket Assignment</li>
+
+<li>CloudWatch Monitoring</li>
+
+<li>AWS X-Ray Tracing</li>
+
+<li>Attachment Upload Support</li>
+
+</ul>
+
+</div>
+
+
+</div>
+<div class="section">
+
+<h2>Frontend File Structure</h2>
+
+<div class="code">
+
+frontend/
+
+├── index.html
+
+├── dashboard.html
+
+├── admin.html
+
+├── mytickets.html
+
+├── style.css
+
+├── auth.js
+
+├── app.js
+
+├── admin.js
+
+└── mytickets.js
+
+</div>
+
+<p>
+
+index.html serves as the landing page.
+
+dashboard.html allows ticket creation.
+
+mytickets.html displays user tickets.
+
+admin.html provides support engineer dashboard functionality.
+
+</p>
+
+</div>
+<div class="section">
+
+<h2>Cognito Configuration</h2>
+
+<table>
+
+<tr>
+<th>Component</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>User Pool</td>
+<td>Ticket Support User Pool</td>
+</tr>
+
+<tr>
+<td>Authentication</td>
+<td>Email Based Login</td>
+</tr>
+
+<tr>
+<td>Hosted UI</td>
+<td>Enabled</td>
+</tr>
+
+<tr>
+<td>OAuth Flow</td>
+<td>Authorization Code Grant</td>
+</tr>
+
+<tr>
+<td>Scopes</td>
+<td>openid, email, phone</td>
+</tr>
+
+</table>
+
+<p>
+
+Cognito handles Signup, Login and Logout operations for all users.
+
+</p>
+
+</div>
+<div class="section">
+
+<h2>CloudFront & S3 Configuration</h2>
+
+<ul>
+
+<li>Create S3 Bucket</li>
+
+<li>Enable Static Website Hosting</li>
+
+<li>Upload frontend files</li>
+
+<li>Create CloudFront Distribution</li>
+
+<li>Attach S3 Bucket as Origin</li>
+
+<li>Configure Default Root Object as index.html</li>
+
+<li>Configure HTTPS Access</li>
+
+</ul>
+
+</div>
+<div class="section">
+
+<h2>Route53 Configuration</h2>
+
+<ul>
+
+<li>Purchase Domain</li>
+
+<li>Create Hosted Zone</li>
+
+<li>Create Alias Record</li>
+
+<li>Point Alias Record to CloudFront Distribution</li>
+
+<li>Verify DNS Propagation</li>
+
+</ul>
+
+</div>
+<div class="section">
+
+<h2>Support Ticket Lifecycle</h2>
+
+<div class="code">
+
+User Login
+
+↓
+
+Create Ticket
+
+↓
+
+DynamoDB Storage
+
+↓
+
+SNS Notification
+
+↓
+
+Admin Review
+
+↓
+
+Status Update
+
+↓
+
+Customer Notification
+
+↓
+
+Resolved
+
+</div>
+
+</div>
+<div class="section">
+
+<h2>Lambda Execution Flow</h2>
+
+<h3>create_ticket_lambda</h3>
+
+<ul>
+
+<li>Receives POST request</li>
+
+<li>Generates UUID Ticket ID</li>
+
+<li>Assigns Category</li>
+
+<li>Stores Ticket in DynamoDB</li>
+
+<li>Sends SNS Notification</li>
+
+</ul>
+
+<h3>update_ticket_lambda</h3>
+
+<ul>
+
+<li>Receives PUT request</li>
+
+<li>Updates Ticket Status</li>
+
+<li>Sends SNS Email Notification</li>
+
+</ul>
+
+<h3>dashboard_stats_lambda</h3>
+
+<ul>
+
+<li>Scans DynamoDB</li>
+
+<li>Calculates Dashboard Metrics</li>
+
+<li>Returns JSON Response</li>
+
+</ul>
+
+</div>
+<div class="section">
+
+<h2>SNS Notification Configuration</h2>
+
+<table>
+
+<tr>
+<th>Topic Name</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>My-Ticket-alerts</td>
+<td>Ticket Notifications</td>
+</tr>
+
+</table>
+
+<ul>
+
+<li>High Priority Ticket Alert</li>
+
+<li>Status Change Alert</li>
+
+<li>Customer Email Notification</li>
+
+</ul>
+
+</div>
+<div class="section">
+
+<h2>Security Controls Implemented</h2>
+
+<ul>
+
+<li>HTTPS via CloudFront</li>
+
+<li>Cognito Authentication</li>
+
+<li>Lambda IAM Roles</li>
+
+<li>DynamoDB Access Policies</li>
+
+<li>SNS Access Permissions</li>
+
+<li>API Gateway Authorization</li>
+
+</ul>
+
+</div>
+<div class="section">
+
+<h2>Project Statistics</h2>
+
+<table>
+
+<tr>
+<th>Category</th>
+<th>Count</th>
+</tr>
+
+<tr>
+<td>Frontend Pages</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>JavaScript Files</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>Lambda Functions</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>API Resources</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>AWS Services Used</td>
+<td>8</td>
+</tr>
+
+</table>
+
+</div>
+<div class="section">
+
+<h2>Lessons Learned</h2>
+
+<ul>
+
+<li>Understanding Serverless Architecture</li>
+
+<li>Integrating Cognito Authentication</li>
+
+<li>Building REST APIs using API Gateway</li>
+
+<li>Using Lambda for Backend Processing</li>
+
+<li>Working with DynamoDB</li>
+
+<li>SNS Email Notifications</li>
+
+<li>CloudFront Website Hosting</li>
+
+<li>Debugging CORS Issues</li>
+
+<li>Managing IAM Permissions</li>
+
+<li>End-to-End AWS Application Deployment</li>
+
+</ul>
+
+</div>  
+<div class="section">
+
+<h2>GitHub Repository Structure</h2>
+
+<div class="code">
+
+AWS-Enterprise-Support-Ticket-System/
+
+├── frontend/
+
+│ ├── index.html
+
+│ ├── dashboard.html
+
+│ ├── admin.html
+
+│ ├── mytickets.html
+
+│ ├── style.css
+
+│ ├── auth.js
+
+│ ├── app.js
+
+│ ├── admin.js
+
+│ └── mytickets.js
+
+│
+
+├── lambda/
+
+│ ├── create_ticket_lambda.py
+
+│ ├── get_tickets_lambda.py
+
+│ ├── get_all_tickets_lambda.py
+
+│ ├── update_ticket_lambda.py
+
+│ └── dashboard_stats_lambda.py
+
+│
+
+├── architecture-diagram.html
+
+├── deployment-guide.html
+
+└── README.md
+
+</div>
+
+</div>
+<div class="section">
+
+<h2>Deployment Validation Checklist</h2>
+
+<table>
+
+<tr>
+<th>Component</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>S3 Website Hosting</td>
+<td>✓</td>
+</tr>
+
+<tr>
+<td>CloudFront Distribution</td>
+<td>✓</td>
+</tr>
+
+<tr>
+<td>Route53 Domain</td>
+<td>✓</td>
+</tr>
+
+<tr>
+<td>Cognito Authentication</td>
+<td>✓</td>
+</tr>
+
+<tr>
+<td>Lambda Functions</td>
+<td>✓</td>
+</tr>
+
+<tr>
+<td>DynamoDB Table</td>
+<td>✓</td>
+</tr>
+
+<tr>
+<td>SNS Notifications</td>
+<td>✓</td>
+</tr>
+
+<tr>
+<td>Admin Dashboard</td>
+<td>✓</td>
+</tr>
+
+</table>
+
+</div>
+<div class="section">
+
+<h2>Project Screenshots</h2>
+
+<ul>
+
+<li>Landing Page Screenshot</li>
+
+<li>Cognito Login Page</li>
+
+<li>Dashboard Page</li>
+
+<li>My Tickets Page</li>
+
+<li>Admin Dashboard</li>
+
+<li>DynamoDB Table</li>
+
+<li>SNS Email Notification</li>
+
+<li>Architecture Diagram</li>
+
+</ul>
+
+<p>
+
+Upload screenshots later into GitHub screenshots folder.
+
+</p>
+
+</div>
+<div class="section">
+
+<h2>Current Limitations</h2>
+
+<ul>
+
+<li>All authenticated users can access Admin Dashboard.</li>
+
+<li>User-specific ticket filtering is not yet implemented.</li>
+
+<li>Role Based Access Control is pending.</li>
+
+<li>Cognito Groups are not configured.</li>
+
+<li>Ticket assignment workflow is not implemented.</li>
+
+</ul>
+
+</div>
+<div class="section">
+
+<h2>Future Roadmap</h2>
+
+<table>
+
+<tr>
+<th>Phase</th>
+<th>Enhancement</th>
+</tr>
+
+<tr>
+<td>Phase 9</td>
+<td>Cognito Groups & RBAC</td>
+</tr>
+
+<tr>
+<td>Phase 10</td>
+<td>User Specific Ticket Visibility</td>
+</tr>
+
+<tr>
+<td>Phase 11</td>
+<td>Ticket Assignment System</td>
+</tr>
+
+<tr>
+<td>Phase 12</td>
+<td>CloudWatch Monitoring</td>
+</tr>
+
+<tr>
+<td>Phase 13</td>
+<td>AWS X-Ray Tracing</td>
+</tr>
+
+<tr>
+<td>Phase 14</td>
+<td>S3 Attachment Uploads</td>
+</tr>
+
+</table>
+
+</div>
+<div class="section">
+
+<h2>Resume Project Description</h2>
+
+<p>
+
+Designed and implemented a fully serverless Enterprise Support Ticket System using AWS services including Cognito, API Gateway, Lambda, DynamoDB, SNS, S3, CloudFront, and Route53.
+
+Implemented secure authentication, ticket management workflows, admin dashboard analytics, SNS email notifications, and serverless REST APIs while following cloud-native architecture principles.
+
+</p>
+
+</div>
+<div class="section">
+
+<h2>Project Explanation for Interviews</h2>
+
+<p>
+
+The project is a serverless support ticket management system hosted on Amazon S3 and CloudFront.
+
+Users authenticate through Amazon Cognito and create support tickets.
+
+API Gateway routes requests to Lambda functions which process business logic and store data in DynamoDB.
+
+SNS is used to send email notifications for high-priority tickets and status changes.
+
+An Admin Dashboard allows support engineers to manage tickets, update statuses, view analytics, and monitor ticket lifecycle activities.
+
+</p>
+
+</div>
+
+</body>
+
+</html>

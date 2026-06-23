@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Support Engineer Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+🎫 Admin Dashboard
+</div>
+
+<nav>
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="mytickets.html">My Tickets</a>
+
+<a href="admin.html">Admin</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="stats">
+
+<div class="card">
+<h3>Total Tickets</h3>
+<h1 id="adminTotal">0</h1>
+</div>
+
+<div class="card">
+<h3>Open</h3>
+<h1 id="adminOpen">0</h1>
+</div>
+
+<div class="card">
+<h3>Resolved</h3>
+<h1 id="adminResolved">0</h1>
+</div>
+
+<div class="card">
+<h3>High Priority</h3>
+<h1 id="adminHigh">0</h1>
+</div>
+
+</div>
+
+<div class="filters">
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search Ticket ID">
+
+<select id="statusFilter">
+
+<option value="ALL">All Status</option>
+
+<option value="OPEN">OPEN</option>
+
+<option value="IN_PROGRESS">IN_PROGRESS</option>
+
+<option value="RESOLVED">RESOLVED</option>
+
+<option value="CLOSED">CLOSED</option>
+
+</select>
+
+<select id="priorityFilter">
+
+<option value="ALL">All Priority</option>
+
+<option value="LOW">LOW</option>
+
+<option value="MEDIUM">MEDIUM</option>
+
+<option value="HIGH">HIGH</option>
+
+</select>
+
+</div>
+
+<table id="ticketsTable">
+
+<thead>
+
+<tr>
+
+<th>Ticket ID</th>
+<th>Customer</th>
+<th>Issue</th>
+<th>Priority</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>

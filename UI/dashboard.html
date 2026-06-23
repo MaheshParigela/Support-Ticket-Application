@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Portal Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+🎫 Support Portal
+</div>
+
+<nav>
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="mytickets.html">My Tickets</a>
+
+<a href="admin.html">Admin</a>
+
+<button onclick="logout()">Logout</button>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="stats">
+
+<div class="card">
+<h3>Total Tickets</h3>
+<h1 id="totalTickets">24</h1>
+</div>
+
+<div class="card">
+<h3>Open Tickets</h3>
+<h1 id="openTickets">10</h1>
+</div>
+
+<div class="card">
+<h3>Resolved</h3>
+<h1 id="resolvedTickets">11</h1>
+</div>
+
+<div class="card">
+<h3>High Priority</h3>
+<h1 id="highTickets">3</h1>
+</div>
+
+</div>
+
+<div class="form-container">
+
+<h2>Create Support Ticket</h2>
+
+<input
+id="customer_name"
+placeholder="Customer Name">
+
+<input
+id="email"
+placeholder="Email Address">
+
+<select id="priority">
+
+<option>LOW</option>
+<option>MEDIUM</option>
+<option>HIGH</option>
+
+</select>
+
+<textarea
+id="issue"
+placeholder="Describe your issue">
+</textarea>
+
+<button onclick="submitTicket()">
+Submit Ticket
+</button>
+
+<div id="response"></div>
+
+</div>
+
+</div>
+
+<script src="auth.js"></script>
+<script src="app.js"></script>
+
+</body>
+
+</html>
